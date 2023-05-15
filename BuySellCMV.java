@@ -12,6 +12,10 @@ import java.util.stream.Collectors;
 import java.time.Duration;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.Random;
+
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -32,7 +36,7 @@ public class BuySellCMV {
          AccountDetails[] accountDetails = retrieveAccountDetails("accounts.json");
 
         // buy the current selection 
-        accountDetails.stream()
+        Arrays.stream(accountDetails)
         .forEach(account -> buy(account.getUsername(), account.getPassword()));
     }
     
@@ -70,9 +74,6 @@ public class BuySellCMV {
          // Find all buttons that have content "Buy/Sell" and not clicked yet , helps incase of interuptions and rerun
         List<WebElement> filteredButtons = filterOutClickedButtons(driver.findElements(By.className("btn-do-task")));
 
-        List<WebElement> filteredButtons = buttons.stream()
-        .filter(button -> !button.getAttribute("class").contains(PENDING_CLASS))
-        .collect(Collectors.toList());
 
         filteredButtons.forEach(button -> {
             if (!button.getAttribute("class").contains(PENDING_CLASS)) {
