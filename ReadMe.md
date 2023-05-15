@@ -1,4 +1,4 @@
-# BuySellCMV Java Program
+# BuySellCMV
 
 This Java program interacts do what it do ;-)
 if you want me to run get these in /lib folder, 
